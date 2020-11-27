@@ -1,10 +1,70 @@
-
+.navbar{
+    background-color: rgba(244, 247, 246, 0.6);
+    border-bottom: 1px solid rgba(64, 64, 64, 0.3);
+    color: black !important;
+}
+.navbar-nav{
+    color: black !important;
+}
 .navbar-brand img {
   width: 140px;
-  height: 40px;
+  height: 50px;
   object-fit: cover;
 }
 .center {
   margin-left: auto;
   margin-right: auto;
+}
+.search-form{
+    margin-left: -15rem;
+    margin-right: 15rem;
+}
+.search-form input {
+  width: 190px;
+  height: 28px;
+  padding-left: 80px;
+  box-sizing: border-box;
+  background: url(https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_search_48px-128.png);
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: 60px 6px;
+  background-color: rgba(244, 247, 246, 0.6);
+}
+.search-form input:focus {
+  padding-left: 30px;
+  background-position: 10px 5.5px;
+  background-color: rgba(244, 247, 246, 0.6);
+}
+.search-form input::placeholder {
+  font-size: 15px;
+}
+.submit-your-site a{
+  font-size: 14px;
+  font-family: sans-serif;
+  padding-top: 15px;
+  color: black !important;
+  margin-left: 2rem;
+}
+.dropdown p{
+    padding-top: 3px;
+    font-size: 13px;
+    font-family: sans-serif;
+    color: black !important;
+}
+.dropdown-toggle::after {
+    display: none;
+  }
+.dropdown img{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 1px solid rgba(64, 64, 64, 0.3);
+}
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:0;  }
+	.navbar .nav-item:hover .nav-link{ color: black;  }
+	.navbar .dropdown-menu.fade-down{ top:80%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
+	.navbar .dropdown-menu.fade-up{ top:180%;  }
+	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); }
 }
