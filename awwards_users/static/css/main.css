@@ -1,0 +1,10 @@
+
+.navbar-brand img {
+  width: 140px;
+  height: 40px;
+  object-fit: cover;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
