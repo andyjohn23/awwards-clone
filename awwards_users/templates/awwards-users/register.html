@@ -13,24 +13,25 @@
                 <div class="register-form">
                     <h1>WELCOME TO AWWWARDS</h1>
                     <div class="signup-header">
-                        <p>Sign up to continue</p> <span>Already a member?&nbsp;<a href="{% url 'login'%}">Login now</a></span>
+                        <p>Sign up to continue</p> <span>Already a member?&nbsp;<a href="{% url 'login'%}">Login
+                                now</a></span>
                     </div>
-
-                    {% for fields in register_form %}
-                    <p>
-                        {% for error in fields.errors %}
-                         <p style="color: red;">{{ error }}</p>
-                        {% endfor %}
-                    </p>
-                    {% endfor %}
-                    {% if register_form.non_field_errors %}
-                    <div style="color: red;">
-                        <p>{{ register_form.non_field_errors }}</p>
-                    </div>
-                    {% endif %}
 
                     <form method="POST" class="form">
                         {% csrf_token %}
+
+                        {% for fields in register_form %}
+                        <p>
+                            {% for error in fields.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                        {% endfor %}
+                        </p>
+                        {% endfor %}
+                        {% if register_form.non_field_errors %}
+                        <div style="color: red;">
+                            <p>{{ register_form.non_field_errors }}</p>
+                        </div>
+                        {% endif %}
 
                         <div class="form-group">
                             <input type="text" class="form-control" name="username" id="username" autocomplete="off"

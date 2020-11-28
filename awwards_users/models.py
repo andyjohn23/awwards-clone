@@ -31,7 +31,6 @@ class ManagerAccount(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
 class UserAccount(AbstractBaseUser):
     email = models.EmailField(verbose_name='email', max_length=70, unique=True)
     username = models.CharField(max_length=70, unique=True)

@@ -7,14 +7,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto main-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" style="font-size:15px; font-family:sans-serif;">HOME<span
+                            class="sr-only">(current)</span></a>
                 </li>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" style="font-size:15px;">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="color: black !important;">
-                        Categories
+                        style="color: black !important;" style="font-size:15px; font-family:sans-serif;">
+                        CATEGORIES
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="">Art</a>
@@ -32,28 +33,28 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown modal" aria-haspopup="true" aria-expanded="false"
-                        data-target="#staticBackdrop">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <p>ANDREW JOHN</p>
-                            </div>
-                            <div class="col-md-3">
-                                <img src="static/images/default-avatar.jpg" alt="profile-photo">
-                            </div>
-                        </div>
+                        data-toggle="dropdown modal" aria-haspopup="true" aria-expanded="false" style="font-size: 15px; color: black !important;">
+                        {{ user.username | title }}&nbsp;<img src="static/images/default-avatar.jpg" alt="profile-photo">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="">Profile</a>
                         <a class="dropdown-item" href="">Settings</a>
-                        <a class="dropdown-item" href="">Logout</a>
+                        <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
                     </div>
                 </li>
+                {% else %}
+                <li class="nav-item" style="padding-top: 5px;">
+                    <a class="nav-link" href="{% url 'login'%}"
+                        style="font-family:sans-serif; font-size:15px; color: black !important;">
+                        REGISTER / LOG IN</a>
+                </li>
+                {% endif %}
 
                 <li class="nav-item submit-your-site">
-                    <a class="nav-link" href="">SUBMIT YOUR SITE!</a>
+                    <a class="nav-link" href="" style="font-family:sans-serif;">SUBMIT YOUR SITE!</a>
                 </li>
 
             </ul>

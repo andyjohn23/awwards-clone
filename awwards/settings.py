@@ -69,6 +69,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'awwards_users.UserAccount'
+
 WSGI_APPLICATION = 'awwards.wsgi.application'
 
 

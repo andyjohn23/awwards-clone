@@ -16,8 +16,28 @@ def index(request):
 
 
 def register(request, *arg, **kwargs):
+    user = request.user
 
-    return render(request, 'awwards-users/register.html')
+    if user.is_authenticated:
+        return HttpResponse('You are already authenticated as { user.email }.')
+    context = {}
+
+    if request.POST:
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email').lower()
+            raw_password = form.cleaned_data.get('password1')
+            account = authenticate(email=email, password=raw_password)
+            login(request, account)
+            destination = get_redirect_if_exists(request)
+            if destination:
+                return redirect(destination)
+            return redirect('index')
+        else:
+            context['register_form'] = form
+
+    return render(request, 'awwards-users/register.html', context)
 
 
 def logout_user(request, *args, **kwargs):
@@ -26,7 +46,31 @@ def logout_user(request, *args, **kwargs):
 
 
 def login_user(request, *args, **kwargs):
-    return render(request, 'awwards-users/login.html')
+
+    context = {}
+
+    user = request.user
+    if user.is_authenticated:
+        return redirect('index')
+
+    destination = get_redirect_if_exists(request)
+    if request.POST:
+        form = AuthenticationForm(request.POST)
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+            if user:
+                login(request, user)
+                destination = get_redirect_if_exists(request)
+                if destination:
+                    return redirect(destination)
+                return redirect('index')
+
+        else:
+            context['login_form'] = form
+
+    return render(request, 'awwards-users/login.html', context)
 
 
 def get_redirect_if_exists(request):

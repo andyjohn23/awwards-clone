@@ -157,6 +157,10 @@ body {
   background-color: rgba(6, 210, 210, 0.8);
   border-bottom: 1px solid rgba(64, 64, 64, 0.3);
 }
+.form button:hover{
+  transition: 0.4s ease;
+  background-color: rgba(7, 200, 210, 0.9);
+}
 .form p {
   margin-top: 2rem;
   margin-left: 10rem;
