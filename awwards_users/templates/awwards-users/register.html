@@ -13,9 +13,9 @@
                 <div class="register-form">
                     <h1>WELCOME TO AWWWARDS</h1>
                     <div class="signup-header">
-                        <p>Sign in to continue</p> <span>Already a member?&nbsp;<a href="">Login now</a></span>
+                        <p>Sign up to continue</p> <span>Already a member?&nbsp;<a href="{% url 'login'%}">Login now</a></span>
                     </div>
-                    
+
                     {% for fields in register_form %}
                     <p>
                         {% for error in fields.errors %}

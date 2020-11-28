@@ -13,7 +13,7 @@
                 <div class="login-form">
                     <h1>WELCOME TO AWWWARDS</h1>
                     <div class="sigin-header">
-                        <p>Sign in to continue</p> <span>Not a member yet?&nbsp;<a href="">Register now</a></span>
+                        <p>Sign in to continue</p> <span>Not a member yet?&nbsp;<a href="{% url 'register'%}">Register now</a></span>
                     </div>
 
                     {% for field in login_form %}
