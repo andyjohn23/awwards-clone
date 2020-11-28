@@ -310,3 +310,71 @@ body {
     margin-left: 28rem;
   }
 }
+/* ipad pro media query */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+  .body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .register-form h1 {
+    margin-left: -27rem;
+  }
+  .register-page img {
+    display: none;
+  }
+  .register-form p {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-left: -19rem;
+  }
+  .register-form span {
+    float: right;
+    margin-left: 0rem;
+    margin-right: 9rem;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: sans-serif;
+  }
+  .login-form h1 {
+    margin-left: -25rem;
+  }
+  .login-page img {
+    display: none;
+  }
+  .login-form p {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-left: -19rem;
+  }
+  .login-form span {
+    float: right;
+    margin-left: 0rem;
+    margin-right: 10rem;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: sans-serif;
+  }
+  .login-form .forgot-password{
+    text-align: center;
+    margin-left: -3rem;
+  }
+  .form input {
+    width: 90vw;
+    height: 60px;
+  }
+  .form button {
+    width: 90vw;
+    height: 60px;
+  }
+  .form {
+    margin-left: -28rem;
+    margin-top: 2rem;
+  }
+  .rights-reserved {
+    margin-top: 3rem;
+    margin-left: 36rem;
+  }
+  
+}
