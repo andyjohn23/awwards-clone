@@ -12,31 +12,7 @@ from .models import UserAccount
 
 
 def index(request):
-
-    context = {}
-
-    user = request.user
-    if user.is_authenticated:
-        return redirect('profile')
-
-    destination = get_redirect_if_exists(request)
-    if request.POST:
-        form = AuthenticationForm(request.POST)
-        if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
-            user = authenticate(email=email, password=password)
-            if user:
-                login(request, user)
-                destination = get_redirect_if_exists(request)
-                if destination:
-                    return redirect(destination)
-                return redirect('index')
-
-        else:
-            context['login_form'] = form
-
-    return render(request, 'instausers/index.html', context)
+    return render(request, 'awwards-users/index.html')
 
 
 def register(request, *arg, **kwargs):
@@ -61,7 +37,7 @@ def register(request, *arg, **kwargs):
         else:
             context['register_form'] = form
 
-    return render(request, 'instausers/register.html', context)
+    return render(request, 'awwards-users/register.html', context)
 
 
 def logout_user(request, *args, **kwargs):
@@ -70,31 +46,7 @@ def logout_user(request, *args, **kwargs):
 
 
 def login_user(request, *args, **kwargs):
-
-    context = {}
-
-    user = request.user
-    if user.is_authenticated:
-        return redirect('profile')
-
-    destination = get_redirect_if_exists(request)
-    if request.POST:
-        form = AuthenticationForm(request.POST)
-        if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
-            user = authenticate(email=email, password=password)
-            if user:
-                login(request, user)
-                destination = get_redirect_if_exists(request)
-                if destination:
-                    return redirect(destination)
-                return redirect('index')
-
-        else:
-            context['login_form'] = form
-
-    return render(request, 'instausers/login.html', context)
+    return render(request, 'awwards-users/login.html')
 
 
 def get_redirect_if_exists(request):

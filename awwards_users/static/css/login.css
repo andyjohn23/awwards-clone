@@ -1,0 +1,91 @@
+body {
+  overflow-x: hidden;
+  background-color: rgba(224, 224, 224, 0.3);
+}
+.login-page img {
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  object-fit: cover;
+}
+.login-form h1 {
+  font-size: 15px;
+  font-weight: 400px;
+  font-family: sans-serif;
+  text-align: center;
+  padding-top: 6rem;
+  letter-spacing: normal;
+}
+.login-form p {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: sans-serif;
+  margin-left: 5.2rem;
+}
+.login-form span {
+  float: right;
+  margin-top: -2.5rem;
+  margin-right: 7rem;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: sans-serif;
+}
+.login-form span a {
+  color: rgba(6, 210, 210, 0.8);
+  font-weight: bold;
+  text-decoration: none;
+}
+.login-form span a:hover {
+  color: black;
+  transition: 0.5s ease;
+}
+.sigin-header {
+  margin-top: 2rem;
+}
+.form {
+  margin-left: 5rem;
+  margin-top: 2rem;
+}
+.form input {
+  width: 450px;
+  height: 60px;
+}
+.form input::placeholder {
+  font-size: 15px;
+  color: grey;
+  font-family: sans-serif;
+}
+.form button {
+  width: 450px;
+  height: 60px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: sans-serif;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: rgba(6, 210, 210, 0.8);
+  border-bottom: 1px solid rgba(64, 64, 64, 0.3);
+}
+.form p {
+  margin-top: 2rem;
+  margin-left: 10rem;
+}
+.form p a {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: rgba(6, 210, 210, 0.8);
+}
+.form p a:hover {
+  transition: 0.5s ease;
+}
+.rights-reserved{
+    margin-top: 3rem;
+    margin-left: -3rem;
+}
+.rights-reserved p{
+    font-size: 14px;
+    font-weight: normal;
+    font-family: sans-serif;
+}

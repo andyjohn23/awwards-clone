@@ -1,0 +1,60 @@
+{% extends 'awwards-users/base2.html' %}
+
+{% block content %}
+
+<div class="container-fluid" style="margin: 0; padding: 0;">
+    <div class="login-page">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/static/images/awwards-login.jpg" alt="login-photo">
+            </div>
+
+            <div class="col-md-6">
+                <div class="login-form">
+                    <h1>WELCOME TO AWWWARDS</h1>
+                    <div class="sigin-header">
+                        <p>Sign in to continue</p> <span>Not a member yet?&nbsp;<a href="">Register now</a></span>
+                    </div>
+
+                    {% for field in login_form %}
+                    <p>
+                        {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                    </p>
+                    {% endfor %}
+                    {% if login_form.non_field_errors %}
+                    <div style="color: red;">
+                        <p>{{ login_form.non_field_errors }}</p>
+                    </div>
+                    {% endif %}
+
+                    <form method="POST" class="form">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" id="email" autocomplete="off"
+                                placeholder="Email" required />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="password" autocomplete="off"
+                                placeholder="Password" required />
+                        </div>
+
+                        <button type="submit">LOGIN NOW</button>
+
+                        <p class="forgot-password"><a href="">Forgot password?</a></p>
+                        <div class="rights-reserved">
+                            <p class="text-muted">
+                                © 2020 Awwards-clone. Andrew John
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
