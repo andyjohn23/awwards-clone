@@ -270,24 +270,28 @@ body {
     font-family: sans-serif;
   }
   .login-form h1 {
-    padding-left: 5rem;
+    margin-left: -25rem;
   }
   .login-page img {
     display: none;
   }
   .login-form p {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     font-family: sans-serif;
-    margin-left: 2rem;
+    margin-left: -19rem;
   }
   .login-form span {
     float: right;
     margin-left: 0rem;
-    margin-right: -4rem;
+    margin-right: 10rem;
     font-size: 16px;
     font-weight: 300;
     font-family: sans-serif;
+  }
+  .login-form .forgot-password{
+    text-align: center;
+    margin-left: -3rem;
   }
   .form input {
     width: 90vw;
