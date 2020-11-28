@@ -17,6 +17,11 @@ body {
   padding-top: 6rem;
   letter-spacing: normal;
 }
+.login-form h1 a{
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+}
 .login-form p {
   font-size: 16px;
   font-weight: bold;
@@ -106,6 +111,11 @@ body {
   padding-top: 3rem;
   letter-spacing: normal;
 }
+.register-form h1 a{
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+}
 .register-form p {
   font-size: 16px;
   font-weight: bold;
@@ -192,6 +202,11 @@ body {
   .register-form h1 {
     padding-left: 5rem;
   }
+  .register-form h1 a{
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+  }
   .register-page img {
     display: none;
   }
@@ -211,6 +226,11 @@ body {
   }
   .login-form h1 {
     padding-left: 5rem;
+  }
+  .login-form h1 a{
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
   }
   .login-page img {
     display: none;
@@ -256,6 +276,11 @@ body {
   .register-form h1 {
     margin-left: -25rem;
   }
+  .register-form h1 a{
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+  }
   .register-page img {
     display: none;
   }
@@ -275,6 +300,11 @@ body {
   }
   .login-form h1 {
     margin-left: -25rem;
+  }
+  .login-form h1 a{
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
   }
   .login-page img {
     display: none;
@@ -323,8 +353,18 @@ body {
   .register-form h1 {
     margin-left: -30rem;
   }
+  .register-form h1 a{
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+  }
   .login-form h1 {
     margin-left: -30rem;
+  }
+  .login-form h1 a{
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
   }
   .login-form .forgot-password{
     text-align: center;
@@ -338,5 +378,4 @@ body {
     margin-top: 3rem;
     margin-left: 36rem;
   }
-  
 }

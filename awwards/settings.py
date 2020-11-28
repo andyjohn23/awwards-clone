@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'awwards_users',
+    'awwards_users.apps.AwwardsUsersConfig',
     'rest_framework',
 ]
 

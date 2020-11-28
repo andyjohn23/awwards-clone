@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from PIL import Image
 
 # Create your models here.
+
 
 class ManagerAccount(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -31,6 +33,7 @@ class ManagerAccount(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
 class UserAccount(AbstractBaseUser):
     email = models.EmailField(verbose_name='email', max_length=70, unique=True)
     username = models.CharField(max_length=70, unique=True)
@@ -51,3 +54,37 @@ class UserAccount(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(UserAccount, on_delete=models.CASCADE)
+    image = models.ImageField(default='default-avatar.jpg')
+    url = models.URLField(max_length=300, blank=True)
+    description = models.TextField(max_length=200, blank=True)
+    Freelance = 'Fl'
+    Agency = 'Ag'
+    Studio = 'St'
+
+    CAREER_CHOICES = [
+        (Freelance, 'Freelance'),
+        (Agency, 'Agency-More than 10 people'),
+        (Studio, 'Studio-10 people or fewer'),
+    ]
+    career = models.CharField(
+        default='Freelance', choices=CAREER_CHOICES, max_length=100, blank=False)
+    twitter = models.URLField(
+        default='https://twitter.com/', max_length=200, blank=True)
+    facebook = models.URLField(
+        default='https://www.facebook.com/', max_length=200, blank=True)
+    linkedin = models.URLField(
+        default='https://linkedin.com/', max_length=200, blank=True)
+    instagram = models.URLField(
+        default='https://instagram.com/', max_length=200, blank=True)
+    date_joined = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.user.username)
+
+    class Meta:
+        ordering = ('-date_joined',)
