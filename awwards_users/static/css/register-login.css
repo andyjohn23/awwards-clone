@@ -179,3 +179,48 @@ body {
   font-weight: normal;
   font-family: sans-serif;
 }
+/* small phones media query */
+@media screen and (min-device-width: 320px) and (max-device-width: 640px) {
+  .body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .register-form h1 {
+    padding-left: 5rem;
+  }
+  .register-page img {
+    display: none;
+  }
+  .register-form p {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-left: 2rem;
+  }
+  .register-form span {
+    float: right;
+    margin-left: 0rem;
+    margin-right: -4rem;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: sans-serif;
+  }
+  .form input {
+    width: 100vw;
+    height: 60px;
+  }
+  .form button {
+    width: 100vw;
+    height: 60px;
+  }
+  .form {
+    margin-left: 2rem;
+    margin-top: 2rem;
+  }
+  .rights-reserved {
+    margin-top: 3rem;
+    margin-left: 1rem;
+  }
+  
+}
+
