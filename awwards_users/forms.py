@@ -3,8 +3,10 @@ from .models import UserAccount
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 
+
 class RegisterUserForm(UserCreationForm):
-    email = forms.EmailField(max_length=200, help_text='Required valid emailaddress')
+    email = forms.EmailField(
+        max_length=200, help_text='Required valid emailaddress')
 
     class Meta:
         model = UserAccount
@@ -18,7 +20,6 @@ class RegisterUserForm(UserCreationForm):
             return email
         raise forms.ValidationError(f'Email {email} is already in use!')
 
-
     def clean_username(self):
         username = self.cleaned_data['username']
         try:
@@ -27,9 +28,10 @@ class RegisterUserForm(UserCreationForm):
             return username
         raise forms.ValidationError(f'Username {username} is already in use!')
 
+
 class AuthenticationForm(forms.ModelForm):
     password = forms.CharField(label='password', widget=forms.PasswordInput)
-    
+
     class Meta:
         model = UserAccount
         fields = ('email', 'password')
@@ -42,3 +44,10 @@ class AuthenticationForm(forms.ModelForm):
                 raise forms.ValidationError('invalid login')
 
 
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = UserAccount
+        fields = ['username', 'email', 'url', 'description', 'career', 'twitter', 'facebook',
+                  'linkedin', 'instagram']
