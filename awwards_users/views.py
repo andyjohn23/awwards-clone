@@ -127,4 +127,12 @@ class ProfileList(ListView):
 
     def get_queryset(self):
         return Projects.objects.all()
-    
+
+@method_decorator(login_required, name='dispatch')
+class UserPostListView(ListView):
+    model = Projects
+    template_name = 'awwards-users/personal-profile.html'
+    context_object_name = 'projects'
+
+    def get_queryset(self):
+        return Projects.objects.filter(profile=self.request.user.profile).distinct()

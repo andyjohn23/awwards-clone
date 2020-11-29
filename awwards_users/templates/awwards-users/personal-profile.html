@@ -1,0 +1,10 @@
+{% extends 'awwards-users/base.html' %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 10rem;">
+    <h1>{{ user.username }}</h1>
+    <p>{{ projects|length}}</p>Projects
+</div>
+
+{% endblock %}
