@@ -359,6 +359,26 @@ body {
   color: white;
   font-style: italic;
 }
+.slide-visit-site {
+  float: left;
+  margin-left: -10rem;
+}
+.slide-visit-site a button{
+  outline: none;
+  border: none;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: sans-serif;
+  width: 110px;
+  height: 35px;
+  color: white;
+  text-align: center;
+  background-color: rgba(6, 210, 210, 0.8);
+}
+.slide-visit-site a button:hover{
+  opacity: 0.9;
+}
 
 /* navbar media query */
 @media all and (min-width: 992px) {

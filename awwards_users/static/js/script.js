@@ -20,7 +20,7 @@ function updatePercentage () {
     elem.find('.ss-progress-fill').css('transform','rotate('+ deg +'deg)');	
     elem.find('.ss-percent span').html(percent);
     if (percent != max) {
-        window.setTimeout( updatePercentage.bind(this), 100);        
+        window.setTimeout( updatePercentage.bind(this), 20);        
     }
 }
 
