@@ -4,7 +4,29 @@
 
 <div class="container" style="margin-top: 10rem;">
     <h1>{{ user.username }}</h1>
-    <p>{{ projects|length}}</p>Projects
+</div>
+
+<div class="container">
+
+    <h1>{{ projects|length}} Projects</h1>
+    <div class="card-projects">
+        {% for project in projects %}
+        <div class="card img-wrapper" style="width: 22.5rem;">
+            <a href=""><img src="{{project.siteimage.url}}" class="card-img-top" alt="project-image" id="myImg"></a>
+            <a href="" class="vote-button">
+                <div class="add-btn">
+                    <button>VOTE NOW</button>
+                </div>
+            </a>
+            <div class="card-body">
+                <h5 class="card-title"><a href="">{{ project.sitename }}</a></h5>
+                <p class="card-text">From {{ project.country }}</p><span>{{project.created | date:"F d, Y"}}</span>
+                <a href=""><img src="{{ user.profile.image.url }}">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
+                        class="user">{{project.profile}}</span></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}

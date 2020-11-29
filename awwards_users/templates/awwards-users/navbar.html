@@ -37,7 +37,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown modal" aria-haspopup="true" aria-expanded="false" style="font-size: 15px; color: black !important;">
-                        {{ user.username |upper }}&nbsp;<img src="/static/images/default-avatar.jpg" alt="profile-photo">
+                        {{ user.username |upper }}&nbsp;<img src="{{ user.profile.image.url }}" alt="profile-photo">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="">Profile</a>
