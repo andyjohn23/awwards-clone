@@ -193,13 +193,13 @@ body {
 }
 .update-form {
   margin-top: 8rem;
-  width: 80vh;
+  width: 92vh;
   border: 1px solid rgba(64, 64, 64, 0.3);
   background-color: white;
 }
 .update-form form {
-  width: 68vh;
-  margin-left: 1rem;
+  width: 73vh;
+  margin-left: 2.5rem;
 }
 .update-form .form input {
   width: 100%;
@@ -237,6 +237,7 @@ body {
   color: white;
   background-color: rgba(6, 210, 210, 0.8);
   border-bottom: 1px solid rgba(64, 64, 64, 0.3);
+  margin-bottom: 1rem;
 }
 .update-form legend{
     padding-top: 1rem;

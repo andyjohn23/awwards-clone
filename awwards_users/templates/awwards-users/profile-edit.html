@@ -2,27 +2,21 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="container-fluid">
-    <div class="update-page">
-        <div class="row">
-            <div class="col-md-4">
-                <p>Helllo</p>
-            </div>
+<div class="container update-form">
+    <div class="row">
 
-            <div class="update-form">
-                <div class="col-md-8">
-                    <form method="POST" class="form">
-                        {% csrf_token %}
-                        <fieldset class="form-group">
-                            <legend class="border-bottom mb-4">Edit Profile</legend>
-                            {{ form | crispy }}
-                        </fieldset>
-                        <div class="form-group">
-                            <button class="btn" type="submit">SAVE CHANGES</button>
-                        </div>
-                    </form>
+        <div class="col-md-12">
+            <form method="POST" class="form">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Edit Profile</legend>
+                    {{ user_form | crispy }}
+                    {{ form | crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn" type="submit">SAVE CHANGES</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

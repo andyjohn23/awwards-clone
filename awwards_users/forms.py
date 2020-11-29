@@ -43,8 +43,14 @@ class AuthenticationForm(forms.ModelForm):
             if not authenticate(email=email, password=password):
                 raise forms.ValidationError('invalid login')
 
-
 class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = UserAccount
+        fields = ['username', 'email']
+
+class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Profile

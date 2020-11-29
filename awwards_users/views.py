@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
-from .forms import RegisterUserForm, AuthenticationForm, UserUpdateForm
+from .forms import RegisterUserForm, AuthenticationForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
@@ -86,17 +86,21 @@ def get_redirect_if_exists(request):
 def profile_edit(request):
 
     if request.method == 'POST':
-        form = UserUpdateForm(request.POST, instance=request.user.profile)
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        form = ProfileUpdateForm(request.POST, instance=request.user.profile)
 
         if form.is_valid():
+            user_form.save()
             form.save()
             messages.success(request, f'Profile updated successfully')
             return redirect('profile-edit')
 
     else:
-        form = UserUpdateForm(instance=request.user.profile)
+        user_form = UserUpdateForm(instance=request.user)
+        form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
+        'user_form': user_form,
         'form': form,
     }
 
