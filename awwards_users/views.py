@@ -5,11 +5,12 @@ from .forms import RegisterUserForm, AuthenticationForm, UserUpdateForm, Profile
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
-from .models import UserAccount
+from .models import UserAccount, Projects
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import CreateView
 
 
 # Create your views here.
-
 
 def index(request):
     return render(request, 'awwards-users/index.html')
@@ -105,3 +106,15 @@ def profile_edit(request):
     }
 
     return render(request, 'awwards-users/profile-edit.html', context)
+
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Projects
+    fields = ['sitename', 'siteurl', 'siteimage', 'description', 'category', 'technology', 'country']
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        form.instance.author = self.request.user
+        form.instance.object_relation_assume = self.request.user.profile
+        self.object.save()
+        return super().form_valid(form)

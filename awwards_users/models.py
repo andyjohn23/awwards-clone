@@ -183,6 +183,9 @@ class Profile(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Projects(models.Model):
     sitename = models.CharField(max_length=300, blank=False, null=False)
@@ -194,4 +197,99 @@ class Projects(models.Model):
     technology = models.CharField(max_length=100, blank=True, null=True)
     profile = models.ForeignKey(
         'Profile', on_delete=models.CASCADE, related_name='projects')
-    country = models.CharField(max_length=100, blank=True, null=True)
+
+    Country = 'CaC'
+    Angola = 'Al'
+    Afghanistan = 'Ag'
+    Argentina = 'Agt'
+    Algeria = 'Aga'
+    Australia = 'Ata'
+    Austria = 'Au'
+    Belgium = 'bg'
+    Burkinafaso = 'bf'
+    Botswana = 'bt'
+    Brazil = 'bl'
+    China = 'ch'
+    Congo = 'co'
+    Cameroon = 'ca'
+    Cuba = 'cu'
+    Denmark = 'dk'
+    Egypt = 'eg'
+    Ethiopia = 'ep'
+    Estonia = 'es'
+    France = 'fr'
+    Fiji = 'fj'
+    Finland = 'fl'
+    Ghana = 'gh'
+    Gabon = 'ga'
+    Guinea = 'gu'
+    Germany = 'ger'
+    Granada = 'gra'
+    Hongkong = 'hong'
+    Haiti = 'ha'
+    Hungary = 'hung'
+    Italy = 'itl'
+    Indonesia = 'ido'
+    Japan = 'jpn'
+    Kenya = 'ke'
+    Kuwait = 'ku'
+    Liberia = 'li'
+    Rwanda = 'rw'
+    Sudan = 'su'
+    Southafrica = 'sou'
+    Uganda = 'ug'
+    Tanzania = 'tz'
+
+    COUNTRY_CHOICES = [
+        (Country, 'Choose a Country'),
+        (Angola, 'Angola'),
+        (Afghanistan, 'Afghanistan'),
+        (Argentina, ' Argentina'),
+        (Algeria, 'Algeria'),
+        (Australia, 'Australia'),
+        (Austria, 'Austria'),
+        (Belgium, 'Belgium'),
+        (Burkinafaso, 'Burkina-Faso'),
+        (Botswana, 'Botswana'),
+        (Brazil, 'Brazil'),
+        (China, 'China'),
+        (Congo, 'Congo'),
+        (Cameroon, 'Cameroon'),
+        (Cuba, 'Cuba'),
+        (Denmark, 'Denmark'),
+        (Egypt, 'Egypt'),
+        (Ethiopia, 'Ethiopia'),
+        (Estonia, 'Estonia'),
+        (France, 'France'),
+        (Fiji, 'Fiji'),
+        (France, 'France'),
+        (Ghana, 'Ghana'),
+        (Gabon, 'Gabon'),
+        (Guinea, 'Guinea'),
+        (Germany, 'Germany'),
+        (Granada, 'Granada'),
+        (Hongkong, 'Hong-Kong'),
+        (Haiti, 'Haiti'),
+        (Hungary, 'Hungary'),
+        (Italy, 'Italy'),
+        (Indonesia, 'Indonesia'),
+        (Japan, 'Japan'),
+        (Kenya, 'Kenya'),
+        (Kuwait, 'Kuwait'),
+        (Liberia, 'Liberia'),
+        (Rwanda, 'Rwanda'),
+        (Sudan, 'Sudan'),
+        (Southafrica, 'South Africa'),
+        (Tanzania, 'Tanzania'),
+        (Uganda, 'Uganda'),
+    ]
+    country = models.CharField(
+        default=Country, choices=COUNTRY_CHOICES, max_length=100, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.sitename)
+
+    class Meta:
+        ordering = ('-created',)
