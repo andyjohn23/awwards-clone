@@ -1,0 +1,30 @@
+{% extends 'awwards-users/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="update-page">
+        <div class="row">
+            <div class="col-md-4">
+                <p>Helllo</p>
+            </div>
+
+            <div class="update-form">
+                <div class="col-md-8">
+                    <form method="POST" style="margin-top: 4rem;">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Edit Profile</legend>
+                            {{ form | crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

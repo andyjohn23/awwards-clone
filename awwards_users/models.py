@@ -61,17 +61,105 @@ class Profile(models.Model):
     image = models.ImageField(default='default-avatar.jpg')
     url = models.URLField(max_length=300, blank=True)
     description = models.TextField(max_length=200, blank=True)
+
     Freelance = 'Fl'
     Agency = 'Ag'
     Studio = 'St'
 
     CAREER_CHOICES = [
-        (Freelance, 'Freelance'),
-        (Agency, 'Agency-More than 10 people'),
-        (Studio, 'Studio-10 people or fewer'),
+        (Freelance, 'Individual / Freelance'),
+        (Agency, 'Agency - More than 10 people'),
+        (Studio, 'Studio - 10 people or fewer'),
     ]
+    Country = 'CaC'
+    Angola = 'Al'
+    Afghanistan = 'Ag'
+    Argentina = 'Agt'
+    Algeria = 'Aga'
+    Australia = 'Ata'
+    Austria = 'Au'
+    Belgium = 'bg'
+    Burkinafaso = 'bf'
+    Botswana = 'bt'
+    Brazil = 'bl'
+    China = 'ch'
+    Congo = 'co'
+    Cameroon = 'ca'
+    Cuba = 'cu'
+    Denmark = 'dk'
+    Egypt = 'eg'
+    Ethiopia = 'ep'
+    Estonia = 'es'
+    France = 'fr'
+    Fiji = 'fj'
+    Finland = 'fl'
+    Ghana = 'gh'
+    Gabon = 'ga'
+    Guinea = 'gu'
+    Germany = 'ger'
+    Granada = 'gra'
+    Hongkong = 'hong'
+    Haiti = 'ha'
+    Hungary = 'hung'
+    Italy = 'itl'
+    Indonesia = 'ido'
+    Japan = 'jpn'
+    Kenya = 'ke'
+    Kuwait = 'ku'
+    Liberia = 'li'
+    Rwanda = 'rw'
+    Sudan = 'su'
+    Southafrica = 'sou'
+    Uganda = 'ug'
+    Tanzania = 'tz'
+
+    COUNTRY_CHOICES = [
+        (Country, 'Choose a Country'),
+        (Angola, 'Angola'),
+        (Afghanistan, 'Afghanistan'),
+        (Argentina, ' Argentina'),
+        (Algeria, 'Algeria'),
+        (Australia, 'Australia'),
+        (Austria, 'Austria'),
+        (Belgium, 'Belgium'),
+        (Burkinafaso, 'Burkina-Faso'),
+        (Botswana, 'Botswana'),
+        (Brazil, 'Brazil'),
+        (China, 'China'),
+        (Congo, 'Congo'),
+        (Cameroon, 'Cameroon'),
+        (Cuba, 'Cuba'),
+        (Denmark, 'Denmark'),
+        (Egypt, 'Egypt'),
+        (Ethiopia, 'Ethiopia'),
+        (Estonia, 'Estonia'),
+        (France, 'France'),
+        (Fiji, 'Fiji'),
+        (France, 'France'),
+        (Ghana, 'Ghana'),
+        (Gabon, 'Gabon'),
+        (Guinea,'Guinea'),
+        (Germany, 'Germany'),
+        (Granada, 'Granada'),
+        (Hongkong, 'Hong-Kong'),
+        (Haiti, 'Haiti'),
+        (Hungary, 'Hungary'),
+        (Italy, 'Italy'),
+        (Indonesia, 'Indonesia'),
+        (Japan, 'Japan'),
+        (Kenya, 'Kenya'),
+        (Kuwait, 'Kuwait'),
+        (Liberia, 'Liberia'),
+        (Rwanda, 'Rwanda'),
+        (Sudan, 'Sudan'),
+        (Southafrica, 'South Africa'),
+        (Tanzania, 'Tanzania'),
+        (Uganda, 'Uganda'),
+    ]
+
+    country = models.CharField(default=Country, choices=COUNTRY_CHOICES, max_length=100, blank=True)
     career = models.CharField(
-        default='Freelance', choices=CAREER_CHOICES, max_length=100, blank=False)
+        default=Freelance, choices=CAREER_CHOICES, max_length=100, blank=False)
     twitter = models.URLField(
         default='https://twitter.com/', max_length=200, blank=True)
     facebook = models.URLField(

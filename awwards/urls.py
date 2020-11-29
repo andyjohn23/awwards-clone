@@ -25,6 +25,7 @@ urlpatterns = [
     path('register/', awwards_users_views.register, name='register'),
     path('login/', awwards_users_views.login_user, name='login'),
     path('logout/', awwards_users_views.logout_user, name='logout'),
+    path('edit/', awwards_users_views.profile_edit, name='profile-edit'),
 ]
 
 if settings.DEBUG:
