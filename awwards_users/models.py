@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from cloudinary.models import CloudinaryField
 from PIL import Image
 
 # Create your models here.
@@ -138,7 +139,7 @@ class Profile(models.Model):
         (France, 'France'),
         (Ghana, 'Ghana'),
         (Gabon, 'Gabon'),
-        (Guinea,'Guinea'),
+        (Guinea, 'Guinea'),
         (Germany, 'Germany'),
         (Granada, 'Granada'),
         (Hongkong, 'Hong-Kong'),
@@ -157,7 +158,8 @@ class Profile(models.Model):
         (Uganda, 'Uganda'),
     ]
 
-    country = models.CharField(default=Country, choices=COUNTRY_CHOICES, max_length=100, blank=True)
+    country = models.CharField(
+        default=Country, choices=COUNTRY_CHOICES, max_length=100, blank=True)
     career = models.CharField(
         default=Freelance, choices=CAREER_CHOICES, max_length=100, blank=False)
     twitter = models.URLField(
@@ -176,3 +178,20 @@ class Profile(models.Model):
 
     class Meta:
         ordering = ('-date_joined',)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class Projects(models.Model):
+    sitename = models.CharField(max_length=300, blank=False, null=False)
+    siteurl = models.URLField(max_length=300, blank=False, null=False)
+    siteimage = CloudinaryField('image')
+    category = models.ForeignKey(
+        'Category', on_delete=models.PROTECT, blank=False, related_name='category')
+    description = models.TextField(max_length=300, blank=False, null=False)
+    technology = models.CharField(max_length=100, blank=True, null=True)
+    profile = models.ForeignKey(
+        'Profile', on_delete=models.CASCADE, related_name='projects')
+    country = models.CharField(max_length=100, blank=True, null=True)

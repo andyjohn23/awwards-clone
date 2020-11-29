@@ -11,11 +11,11 @@ function updatePercentage () {
     
     percent = percent.toFixed(1);
     
-    deg = 360*percent/5;
+    deg = 360*percent/10;
     
     elem.data("percent-current", percent);
     
-    elem.toggleClass('gt-50', percent > 2.5);
+    elem.toggleClass('gt-50', percent > 5);
     
     elem.find('.ss-progress-fill').css('transform','rotate('+ deg +'deg)');	
     elem.find('.ss-percent span').html(percent);
