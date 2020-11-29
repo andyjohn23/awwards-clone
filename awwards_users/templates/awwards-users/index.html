@@ -2,8 +2,17 @@
 
 {% block content %}
 
-<div class="front-cover">
-
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for project in projects %}
+        <div class="carousel-item {% if forloop.first %} active{% endif %}">
+            <img src="{{ project.siteimage.url }}">
+            <div class="carousel-caption">
+                <h4>{{ project.title }}</h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 <div class="container">
@@ -12,138 +21,65 @@
     </div>
 
     <div class="card-projects">
+        {% for project in projects %}
         <div class="card img-wrapper" style="width: 22.5rem;">
-            <a href=""><img src="static/images/test.jpg" class="card-img-top" alt="project-image" id="myImg"></a>
-            <a href="{{ photo.image.url }}" download="{{ photo.id }}" class="vote-button">
-                <div class="add-btn" title="Download photo">
+            <a href=""><img src="{{project.siteimage.url}}" class="card-img-top" alt="project-image" id="myImg"></a>
+            <a href="" class="vote-button">
+                <div class="add-btn">
                     <button>VOTE NOW</button>
                 </div>
             </a>
             <div class="card-body">
-                <h5 class="card-title">Facebook-clone</h5>
-                <p class="card-text">From Kenya</p><span>November 28, 2020</span>
+                <h5 class="card-title"><a href="">{{ project.sitename }}</a></h5>
+                <p class="card-text">From {{ project.country }}</p><span>{{project.created | date:"F d, Y"}}</span>
                 <a href=""><img src="static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
-                        class="user">Andrew John</span></a>
+                        class="user">{{project.profile}}</span></a>
             </div>
         </div>
-
-        <div class="card img-wrapper" style="width: 22.5rem;">
-            <a href=""><img src="static/images/test.jpg" class="card-img-top" alt="project-image" id="myImg"></a>
-            <a href="{{ photo.image.url }}" download="{{ photo.id }}" class="vote-button">
-                <div class="add-btn" title="Download photo">
-                    <button>VOTE NOW</button>
-                </div>
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Facebook-clone</h5>
-                <p class="card-text">From Kenya</p><span>November 28, 2020</span>
-                <a href=""><img src="static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
-                        class="user">Andrew John</span></a>
-            </div>
-        </div>
-
-        <div class="card img-wrapper" style="width: 22.5rem;">
-            <a href=""><img src="static/images/test.jpg" class="card-img-top" alt="project-image" id="myImg"></a>
-            <a href="{{ photo.image.url }}" download="{{ photo.id }}" class="vote-button">
-                <div class="add-btn" title="Download photo">
-                    <button>VOTE NOW</button>
-                </div>
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Facebook-clone</h5>
-                <p class="card-text">From Kenya</p><span>November 28, 2020</span>
-                <a href=""><img src="static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
-                        class="user">Andrew John</span></a>
-            </div>
-        </div>
-
-        <div class="card img-wrapper" style="width: 22.5rem;">
-            <a href=""><img src="static/images/test.jpg" class="card-img-top" alt="project-image" id="myImg"></a>
-            <a href="{{ photo.image.url }}" download="{{ photo.id }}" class="vote-button">
-                <div class="add-btn" title="Download photo">
-                    <button>VOTE NOW</button>
-                </div>
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Facebook-clone</h5>
-                <p class="card-text">From Kenya</p><span>November 28, 2020</span>
-                <a href=""><img src="static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
-                        class="user">Andrew John</span></a>
-            </div>
-        </div>
-
-        <div class="card img-wrapper" style="width: 22.5rem;">
-            <a href=""><img src="static/images/test.jpg" class="card-img-top" alt="project-image" id="myImg"></a>
-            <a href="{{ photo.image.url }}" download="{{ photo.id }}" class="vote-button">
-                <div class="add-btn" title="Download photo">
-                    <button>VOTE NOW</button>
-                </div>
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Facebook-clone</h5>
-                <p class="card-text">From Kenya</p><span>November 28, 2020</span>
-                <a href=""><img src="static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
-                        class="user">Andrew John</span></a>
-            </div>
-        </div>
-
-        <div class="card img-wrapper" style="width: 22.5rem;">
-            <a href=""><img src="static/images/test.jpg" class="card-img-top" alt="project-image" id="myImg"></a>
-            <a href="{{ photo.image.url }}" download="{{ photo.id }}" class="vote-button">
-                <div class="add-btn" title="Download photo">
-                    <button>VOTE NOW</button>
-                </div>
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Facebook-clone</h5>
-                <p class="card-text">From Kenya</p><span>November 28, 2020</span>
-                <a href=""><img src="static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
-                        class="user">Andrew John</span></a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <div class="progress" data-percent="1">
-	<div class="ss-progress">
-		<div class="ss-progress-fill"></div>
-	</div>
-	<div class="ss-percent">
-		<div class="ss-percent-wrapper">
-			<span>%</span>
-		</div>
-	</div>
+    <div class="ss-progress">
+        <div class="ss-progress-fill"></div>
+    </div>
+    <div class="ss-percent">
+        <div class="ss-percent-wrapper">
+            <span>%</span>
+        </div>
+    </div>
 </div>
 
 <div class="progress" data-percent="2.5">
-	<div class="ss-progress">
-		<div class="ss-progress-fill"></div>
-	</div>
-	<div class="ss-percent">
-		<div class="ss-percent-wrapper">
-			<span>%</span>
-		</div>
-	</div>
+    <div class="ss-progress">
+        <div class="ss-progress-fill"></div>
+    </div>
+    <div class="ss-percent">
+        <div class="ss-percent-wrapper">
+            <span>%</span>
+        </div>
+    </div>
 </div>
 
 <div class="progress" data-percent="3">
-	<div class="ss-progress">
-		<div class="ss-progress-fill"></div>
-	</div>
-	<div class="ss-percent">
-		<div class="ss-percent-wrapper">
-			<span>%</span>
-		</div>
-	</div>
+    <div class="ss-progress">
+        <div class="ss-progress-fill"></div>
+    </div>
+    <div class="ss-percent">
+        <div class="ss-percent-wrapper">
+            <span>%</span>
+        </div>
+    </div>
 </div>
 
 <div class="progress" data-percent="1">
-	<div class="ss-progress">
-		<div class="ss-progress-fill"></div>
-	</div>
-	<div class="ss-percent">
-		<div class="ss-percent-wrapper">
-			<span>%</span>
-		</div>
-	</div>
+    <div class="ss-progress">
+        <div class="ss-progress-fill"></div>
+    </div>
+    <div class="ss-percent">
+        <div class="ss-percent-wrapper">
+            <span>%</span>
+        </div>
+    </div>
 </div>
 {% endblock %}

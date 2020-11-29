@@ -8,6 +8,7 @@ from django.contrib import messages
 from .models import UserAccount, Projects
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView
+from django.views.generic import ListView
 
 
 # Create your views here.
@@ -118,3 +119,13 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.object_relation_assume = self.request.user.profile
         self.object.save()
         return super().form_valid(form)
+
+@method_decorator(login_required, name='dispatch')
+class ProfileList(ListView):
+    model = Projects
+    template_name = 'awwards-users/index.html'
+    context_object_name = 'projects'
+
+    def get_queryset(self):
+        return Projects.objects.all()
+    
