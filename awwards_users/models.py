@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
 from PIL import Image
 
 # Create your models here.
@@ -196,7 +197,7 @@ class Projects(models.Model):
     description = models.TextField(max_length=300, blank=False, null=False)
     technology = models.CharField(max_length=100, blank=True, null=True)
     profile = models.ForeignKey(
-        'Profile', on_delete=models.CASCADE, related_name='projects')
+        'Profile', on_delete=models.CASCADE, related_name='owner')
 
     Country = 'CaC'
     Angola = 'Al'
@@ -290,6 +291,9 @@ class Projects(models.Model):
 
     def __str__(self):
         return str(self.sitename)
+
+    def get_absolute_url(self):
+        return reverse('index')
 
     class Meta:
         ordering = ('-created',)

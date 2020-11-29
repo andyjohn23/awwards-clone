@@ -114,7 +114,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        form.instance.author = self.request.user
+        form.instance.profile = self.request.user.profile
         form.instance.object_relation_assume = self.request.user.profile
         self.object.save()
         return super().form_valid(form)
