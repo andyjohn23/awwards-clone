@@ -2,14 +2,15 @@
 
 {% block content %}
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-interval="3600000" data-ride="carousel">
     <div class="carousel-inner">
         {% for project in projects %}
         <div class="carousel-item {% if forloop.first %} active{% endif %}">
             <img src="{{ project.siteimage.url }}">
             <div class="carousel-caption">
                 <div class="slide-project-name">
-
+                  <h1>{{ project.sitename }}</h1>
+                  <p>BY <span>{{ project.profile |upper }}</span> FROM <span id="slide-country">{{ project.country |upper }}</span></p>
                 </div>
                 <div class="circle-progress">
                     <div class="row">

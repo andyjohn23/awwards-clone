@@ -346,6 +346,20 @@ body {
 .content .ss-progress .ss-progress-fill {
   background-color: #3CAEF0;
 }
+.slide-project-name {
+  margin-bottom: 1.8rem;
+}
+.slide-project-name p span{
+  font-size: 16px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: rgba(6, 210, 210, 0.8);
+}
+.slide-project-name #slide-country{
+  color: white;
+  font-style: italic;
+}
+
 
 
 
