@@ -326,7 +326,7 @@ body {
   margin-left: 14rem;
   margin-bottom: 3rem;
 }
-.circle-progress p{
+.circle-progress p {
   font-size: 13px;
   font-weight: 400;
   font-family: sans-serif;
@@ -335,33 +335,30 @@ body {
   padding-left: 0.8rem;
 }
 .design .ss-progress .ss-progress-fill {
-  background-color: #EB5757;
+  background-color: #eb5757;
 }
 .usability .ss-progress .ss-progress-fill {
-  background-color: #F2C56D;
+  background-color: #f2c56d;
 }
 .creativity .ss-progress .ss-progress-fill {
-  background-color: #79CDFD;
+  background-color: #79cdfd;
 }
 .content .ss-progress .ss-progress-fill {
-  background-color: #3CAEF0;
+  background-color: #3caef0;
 }
 .slide-project-name {
   margin-bottom: 1.8rem;
 }
-.slide-project-name p span{
+.slide-project-name p span {
   font-size: 16px;
   font-weight: bold;
   font-family: sans-serif;
   color: rgba(6, 210, 210, 0.8);
 }
-.slide-project-name #slide-country{
+.slide-project-name #slide-country {
   color: white;
   font-style: italic;
 }
-
-
-
 
 /* navbar media query */
 @media all and (min-width: 992px) {
@@ -398,6 +395,12 @@ body {
     width: 100%;
     overflow-x: hidden;
   }
+  .circle-progress {
+    display: none;
+  }
+  .slide-project-name {
+    margin-bottom: 10rem;
+  }
   .front-cover {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url(../images/test.jpg);
@@ -430,6 +433,12 @@ body {
   .body {
     width: 100%;
     overflow-x: hidden;
+  }
+  .circle-progress {
+    display: none;
+  }
+  .slide-project-name {
+    margin-bottom: 10rem;
   }
   .front-cover {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -464,13 +473,14 @@ body {
     width: 100%;
     overflow-x: hidden;
   }
-  .front-cover {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url(../images/test.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 52rem;
+  .circle-progress {
+    display: none;
+  }
+  .slide-project-name {
+    margin-bottom: 26rem;
+  }
+  .carousel-inner{
+    width: 848px;
     height: 75vh;
     margin-top: 4.8rem;
   }
@@ -490,13 +500,8 @@ body {
     width: 100%;
     overflow-x: hidden;
   }
-  .front-cover {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url(../images/test.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 64rem;
+  .carousel-inner{
+    width: 1024px;
     height: 75vh;
     margin-top: 4.8rem;
   }
