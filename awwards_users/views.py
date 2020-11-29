@@ -108,8 +108,8 @@ def profile_edit(request):
 
     return render(request, 'awwards-users/profile-edit.html', context)
 
-
-class PostCreateView(LoginRequiredMixin, CreateView):
+@method_decorator(login_required, name='dispatch')
+class PostCreateView(CreateView):
     model = Projects
     fields = ['sitename', 'siteurl', 'siteimage', 'description', 'category', 'technology', 'country']
 
@@ -120,7 +120,6 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         self.object.save()
         return super().form_valid(form)
 
-@method_decorator(login_required, name='dispatch')
 class ProfileList(ListView):
     model = Projects
     template_name = 'awwards-users/index.html'

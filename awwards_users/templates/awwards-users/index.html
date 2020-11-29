@@ -8,7 +8,61 @@
         <div class="carousel-item {% if forloop.first %} active{% endif %}">
             <img src="{{ project.siteimage.url }}">
             <div class="carousel-caption">
-                <h4>{{ project.title }}</h4>
+                <div class="circle-progress">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="progress" data-percent="1">
+                                <div class="ss-progress">
+                                    <div class="ss-progress-fill"></div>
+                                </div>
+                                <div class="ss-percent">
+                                    <div class="ss-percent-wrapper">
+                                        <span>%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="progress" data-percent="2.5">
+                                <div class="ss-progress">
+                                    <div class="ss-progress-fill"></div>
+                                </div>
+                                <div class="ss-percent">
+                                    <div class="ss-percent-wrapper">
+                                        <span>%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="progress" data-percent="3">
+                                <div class="ss-progress">
+                                    <div class="ss-progress-fill"></div>
+                                </div>
+                                <div class="ss-percent">
+                                    <div class="ss-percent-wrapper">
+                                        <span>%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="progress" data-percent="1">
+                                <div class="ss-progress">
+                                    <div class="ss-progress-fill"></div>
+                                </div>
+                                <div class="ss-percent">
+                                    <div class="ss-percent-wrapper">
+                                        <span>%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
@@ -37,49 +91,6 @@
             </div>
         </div>
         {% endfor %}
-    </div>
-</div>
-<div class="progress" data-percent="1">
-    <div class="ss-progress">
-        <div class="ss-progress-fill"></div>
-    </div>
-    <div class="ss-percent">
-        <div class="ss-percent-wrapper">
-            <span>%</span>
-        </div>
-    </div>
-</div>
-
-<div class="progress" data-percent="2.5">
-    <div class="ss-progress">
-        <div class="ss-progress-fill"></div>
-    </div>
-    <div class="ss-percent">
-        <div class="ss-percent-wrapper">
-            <span>%</span>
-        </div>
-    </div>
-</div>
-
-<div class="progress" data-percent="3">
-    <div class="ss-progress">
-        <div class="ss-progress-fill"></div>
-    </div>
-    <div class="ss-percent">
-        <div class="ss-percent-wrapper">
-            <span>%</span>
-        </div>
-    </div>
-</div>
-
-<div class="progress" data-percent="1">
-    <div class="ss-progress">
-        <div class="ss-progress-fill"></div>
-    </div>
-    <div class="ss-percent">
-        <div class="ss-percent-wrapper">
-            <span>%</span>
-        </div>
     </div>
 </div>
 {% endblock %}

@@ -77,6 +77,9 @@ body {
   height: 75vh;
   margin-top: 4.8rem;
   object-fit: cover;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
 }
 .nominees {
   margin-top: 3rem;
@@ -252,11 +255,12 @@ body {
   font-family: sans-serif;
 }
 .progress {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  background-color: #e5e5e5;
+  background-color: transparent;
   position: relative;
+  border: 1px solid white;
 }
 .progress.gt-50 {
   background-color: #81ce97;
@@ -294,17 +298,17 @@ body {
   content: "";
   position: absolute;
   border-radius: 50%;
-  left: calc(50% - 173.91304px / 2);
-  top: calc(50% - 173.91304px / 2);
-  width: 173.91304px;
-  height: 173.91304px;
-  background: #fff;
+  left: calc(50% - 83.91304px / 2);
+  top: calc(50% - 83.91304px / 2);
+  width: 83.91304px;
+  height: 83.91304px;
+  background: white;
   text-align: center;
   display: table;
 }
 .ss-percent span {
   display: block;
-  font-size: 2.6em;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #81ce97;
 }
@@ -312,7 +316,10 @@ body {
   display: table-cell;
   vertical-align: middle;
 }
-
+.circle-progress{
+  margin-left: 14rem;
+  margin-bottom: 3rem;
+}
 /* navbar media query */
 @media all and (min-width: 992px) {
   .navbar .nav-item .dropdown-menu {
