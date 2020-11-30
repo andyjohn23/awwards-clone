@@ -499,6 +499,29 @@ body {
   margin-left: 2rem;
   margin-bottom: 2rem;
 }
+.confirm-delete {
+  margin-top: 13rem;
+  margin-bottom: 12rem;
+  width: 92vh;
+  border: 1px solid rgba(64, 64, 64, 0.3);
+  background-color: white;
+}
+.confirm-delete form {
+  width: 73vh;
+  margin-left: 2.5rem;
+}
+.confirm-delete legend {
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  font-family: sans-serif;
+}
+.confirm-delete form h2{
+  font-size: 16px;
+  font-weight: 500;
+  font-family: sans-serif;
+}
 
 /* navbar media query */
 @media all and (min-width: 992px) {
