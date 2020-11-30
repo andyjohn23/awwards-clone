@@ -8,7 +8,7 @@ from django.contrib import messages
 from .models import UserAccount, Projects
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
 # Create your views here.
@@ -142,6 +142,16 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.profile = self.request.user.profile
         return super().form_valid(form)
+
+    def test_func(self):
+        project = self.get_object()
+        if self.request.user.profile == project.profile:
+            return True
+        return False
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Projects
+    success_url = '/'
 
     def test_func(self):
         project = self.get_object()
