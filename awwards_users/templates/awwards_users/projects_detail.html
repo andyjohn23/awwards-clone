@@ -2,20 +2,28 @@
 
 {% block content %}
 
-<article class="media content-section" style="margin-top: 10rem;">
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="">{{ object.profile }}</a>
-            <small class="text-muted">{{ object.created | date:"F d, Y" }}</small>
-            {% if object.profile == user.profile %}
-            <div>
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id%}">Update</a>
-                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id%}">Delete</a>
-            </div>
-            {% endif %}
-        </div>
-        <h2 class="article-title">{{ object.sitename }}</h2>
-    </div>
-</article>
+<div class="container-fluid single-project-detail">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="project-card">
+                <a href="{{ object.siteurl }}" target="_blank"><img src="{{ object.siteimage.url }}" alt="project-image"></a>
+                <a href=""><button>VOTE NOW</button></a>
+                <h2 class="article-title">{{ object.sitename |title }}</h2>
+                <p>by <a class="mr-2" href="">{{ object.profile }}</a>({{ object.country }})</p>
+                <span>{{ object.description }}</span>
+                <small>{{ object.created | date:"F d, Y" }}</small>
+                {% if object.profile == user.profile %}
+                <div class="update-delete-buttons">
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id%}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id%}">Delete</a>
+                </div>
+                {% endif %}
 
-{% endblock content %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
