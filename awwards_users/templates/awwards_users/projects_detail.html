@@ -10,7 +10,7 @@
                         alt="project-image"></a>
                 <a href=""><button>VOTE NOW</button></a>
                 <h2 class="article-title">{{ object.sitename |title }}</h2>
-                <p>by <a class="mr-2" href="">{{ object.profile }}</a>({{ object.country }})</p>
+                <p>by <a class="mr-2" href="{% url 'user-details' object.profile%}">{{ object.profile }}</a>({{ object.country }})</p>
                 <div class="description">
                     <span>{{ object.description }}</span>
                 </div>
