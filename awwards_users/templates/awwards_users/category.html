@@ -1,0 +1,36 @@
+{% extends "awwards_users/base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="nominees" style="margin-top: 8rem;">
+        <h1>List of {{ catlist.cat |capfirst }} projects</h1>
+    </div>
+    <div class="card-projects">
+        {% for project in catlist.projects %}
+        <div class="card img-wrapper" style="width: 22.5rem;">
+            <a href="{% url 'post-detail' project.id %}"><img src="{{project.siteimage.url}}" class="card-img-top"
+                    alt="project-image" id="myImg"></a>
+            <a href="{% url 'post-detail' project.id %}" class="vote-button">
+                <div class="add-btn">
+                    <button>VOTE NOW</button>
+                </div>
+            </a>
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'post-detail' project.id %}">{{ project.sitename }}</a></h5>
+                <p class="card-text">From {{ project.country }}</p><span>{{project.created | date:"F d, Y"}}</span>
+                {% if project.profile == user.profile %}
+                <a href="{% url 'user-detail'%}"><img
+                        src="/static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
+                        class="user">{{user.profile}}</span></a>
+                {% else %}
+                <a href="{% url 'user-details' project.profile%}"><img
+                        src="/static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
+                        class="user">{{project.profile}}</span></a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

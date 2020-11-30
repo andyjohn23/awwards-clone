@@ -54,6 +54,9 @@ body {
   color: black !important;
   margin-left: 2rem;
 }
+.dropdown-category{
+  width: 250px;
+}
 .dropdown p {
   padding-top: 10px;
   font-size: 13px;

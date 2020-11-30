@@ -5,7 +5,7 @@ from .forms import RegisterUserForm, AuthenticationForm, UserUpdateForm, Profile
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
-from .models import UserAccount, Projects
+from .models import UserAccount, Projects, Category
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -19,8 +19,10 @@ class PostListView(ListView):
     context_object_name = 'projects'
     ordering = ['-created']
 
+
 class PostDetailView(DetailView):
     model = Projects
+
 
 def register(request, *arg, **kwargs):
     user = request.user
@@ -113,10 +115,12 @@ def profile_edit(request):
 
     return render(request, 'awwards_users/profile-edit.html', context)
 
+
 @method_decorator(login_required, name='dispatch')
 class PostCreateView(CreateView):
     model = Projects
-    fields = ['sitename', 'siteurl', 'siteimage', 'description', 'category', 'technology', 'country']
+    fields = ['sitename', 'siteurl', 'siteimage',
+              'description', 'category', 'technology', 'country']
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -124,6 +128,7 @@ class PostCreateView(CreateView):
         form.instance.object_relation_assume = self.request.user.profile
         self.object.save()
         return super().form_valid(form)
+
 
 @method_decorator(login_required, name='dispatch')
 class PersonalPostListView(ListView):
@@ -134,6 +139,7 @@ class PersonalPostListView(ListView):
     def get_queryset(self):
         return Projects.objects.filter(profile=self.request.user.profile).distinct()
 
+
 @method_decorator(login_required, name='dispatch')
 class UserPostListView(ListView):
     model = Projects
@@ -141,12 +147,15 @@ class UserPostListView(ListView):
     context_object_name = 'projects'
 
     def get_queryset(self):
-        user = get_object_or_404(UserAccount, username=self.kwargs.get('username'))
+        user = get_object_or_404(
+            UserAccount, username=self.kwargs.get('username'))
         return Projects.objects.filter(profile=user.profile).order_by('-created')
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Projects
-    fields = ['sitename', 'siteurl', 'siteimage', 'description', 'category', 'technology', 'country']
+    fields = ['sitename', 'siteurl', 'siteimage',
+              'description', 'category', 'technology', 'country']
 
     def form_valid(self, form):
         form.instance.profile = self.request.user.profile
@@ -158,6 +167,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
+
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Projects
     success_url = '/'
@@ -167,3 +177,24 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user.profile == project.profile:
             return True
         return False
+
+
+class CategoryListView(ListView):
+    template_name = 'awwards_users/category.html'
+    context_object_name = 'catlist'
+
+    def get_queryset(self):
+        content = {
+            'cat': self.kwargs['category'],
+            'description': self.kwargs['category'],
+            'projects': Projects.objects.filter(category__name=self.kwargs['category'])
+        }
+        return content
+
+
+def category(request):
+    category = Category.objects.all()
+    context = {
+        'category': category,
+    }
+    return context

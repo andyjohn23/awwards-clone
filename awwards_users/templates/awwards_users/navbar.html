@@ -17,10 +17,12 @@
                         style="color: black !important;" style="font-size:15px; font-family:sans-serif;">
                         CATEGORIES
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Art</a>
-                        <a class="dropdown-item" href="">Music</a>
-                        <a class="dropdown-item" href="">Games</a>
+                    <div class="dropdown-menu dropdown-category" aria-labelledby="navbarDropdown">
+                        {% for categorys in category %}
+                        <a class="nav-link" href="/category/{{ categorys.name}}">
+                            {{ categorys.name|capfirst }}
+                        </a>
+                        {% endfor %}
                     </div>
                 </li>
             </ul>
