@@ -1,4 +1,4 @@
-{% extends 'awwards-users/base.html' %}
+{% extends 'awwards_users/base.html' %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
             <div class="carousel-caption">
                 <div class="slide-project-name">
                   <h1>{{ project.sitename }}</h1>
-                  <p>BY <span>{{ project.profile |upper }}</span> FROM <span id="slide-country">{{ project.country |upper }}</span></p>
+                  <p>BY <span><a href="">{{project.profile |upper }}</a></span> FROM <span id="slide-country">{{ project.country |upper }}</span></p>
                 </div>
                 <div class="circle-progress">
                     <div class="row">
@@ -95,9 +95,9 @@
                 </div>
             </a>
             <div class="card-body">
-                <h5 class="card-title"><a href="">{{ project.sitename }}</a></h5>
+                <h5 class="card-title"><a href="{% url 'post-detail' post.id %}">{{ project.sitename }}</a></h5>
                 <p class="card-text">From {{ project.country }}</p><span>{{project.created | date:"F d, Y"}}</span>
-                <a href=""><img src="{{ user.profile.image.url }}">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
+                <a href=""><img src="/static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
                         class="user">{{project.profile}}</span></a>
             </div>
         </div>

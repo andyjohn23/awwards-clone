@@ -1,0 +1,15 @@
+{% extends "awwards_users/base.html" %}
+
+{% block content %}
+
+<article class="media content-section" style="margin-top: 10rem;">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="">{{ object.profile }}</a>
+            <small class="text-muted">{{ object.created | date:"F d, Y" }}</small>
+        </div>
+        <h2 class="article-title">{{ object.sitename }}</h2>
+    </div>
+</article>
+
+{% endblock content %}

@@ -8,14 +8,19 @@ from django.contrib import messages
 from .models import UserAccount, Projects
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'awwards-users/index.html')
+class PostListView(ListView):
+    model = Projects
+    template_name = 'awwards_users/index.html'
+    context_object_name = 'projects'
+    ordering = ['-created']
 
+class PostDetailView(DetailView):
+    model = Projects
 
 def register(request, *arg, **kwargs):
     user = request.user
@@ -39,7 +44,7 @@ def register(request, *arg, **kwargs):
         else:
             context['register_form'] = form
 
-    return render(request, 'awwards-users/register.html', context)
+    return render(request, 'awwards_users/register.html', context)
 
 
 def logout_user(request, *args, **kwargs):
@@ -72,7 +77,7 @@ def login_user(request, *args, **kwargs):
         else:
             context['login_form'] = form
 
-    return render(request, 'awwards-users/login.html', context)
+    return render(request, 'awwards_users/login.html', context)
 
 
 def get_redirect_if_exists(request):
@@ -106,7 +111,7 @@ def profile_edit(request):
         'form': form,
     }
 
-    return render(request, 'awwards-users/profile-edit.html', context)
+    return render(request, 'awwards_users/profile-edit.html', context)
 
 @method_decorator(login_required, name='dispatch')
 class PostCreateView(CreateView):
@@ -120,19 +125,26 @@ class PostCreateView(CreateView):
         self.object.save()
         return super().form_valid(form)
 
-class ProfileList(ListView):
-    model = Projects
-    template_name = 'awwards-users/index.html'
-    context_object_name = 'projects'
-
-    def get_queryset(self):
-        return Projects.objects.all()
-
 @method_decorator(login_required, name='dispatch')
 class UserPostListView(ListView):
     model = Projects
-    template_name = 'awwards-users/personal-profile.html'
+    template_name = 'awwards_users/personal-profile.html'
     context_object_name = 'projects'
 
     def get_queryset(self):
         return Projects.objects.filter(profile=self.request.user.profile).distinct()
+
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Projects
+    fields = ['sitename', 'siteurl', 'siteimage', 'description', 'category', 'technology', 'country']
+
+    def form_valid(self, form):
+        form.instance.profile = self.request.user.profile
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False

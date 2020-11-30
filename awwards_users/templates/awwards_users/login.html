@@ -1,42 +1,37 @@
-{% extends 'awwards-users/base2.html' %}
+{% extends 'awwards_users/base2.html' %}
 
 {% block content %}
 
 <div class="container-fluid" style="margin: 0; padding: 0;">
-    <div class="register-page">
+    <div class="login-page">
         <div class="row">
             <div class="col-md-6">
-                <img src="/static/images/awwards-register.jpg" alt="register-photo">
+                <img src="/static/images/awwards-login.jpg" alt="login-photo">
             </div>
 
             <div class="col-md-6">
-                <div class="register-form">
+                <div class="login-form">
                     <h1><a href="/">WELCOME TO AWWWARDS</a></h1>
-                    <div class="signup-header">
-                        <p>Sign up to continue</p> <span>Already a member?&nbsp;<a href="{% url 'login'%}">Login
+                    <div class="sigin-header">
+                        <p>Sign in to continue</p> <span>Not a member yet?&nbsp;<a href="{% url 'register'%}">Register
                                 now</a></span>
                     </div>
 
                     <form method="POST" class="form">
                         {% csrf_token %}
 
-                        {% for fields in register_form %}
+                        {% for field in login_form %}
                         <p>
-                            {% for error in fields.errors %}
+                            {% for error in field.errors %}
                         <p style="color: red;">{{ error }}</p>
                         {% endfor %}
                         </p>
                         {% endfor %}
-                        {% if register_form.non_field_errors %}
+                        {% if login_form.non_field_errors %}
                         <div style="color: red;">
-                            <p>{{ register_form.non_field_errors }}</p>
+                            <p>{{ login_form.non_field_errors }}</p>
                         </div>
                         {% endif %}
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="username" id="username" autocomplete="off"
-                                placeholder="Username" required />
-                        </div>
 
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" id="email" autocomplete="off"
@@ -44,17 +39,13 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="password" class="form-control" name="password1" id="password"
-                                autocomplete="off" placeholder="Password" required />
+                            <input type="password" class="form-control" name="password" id="password" autocomplete="off"
+                                placeholder="Password" required />
                         </div>
 
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="password2" id="password"
-                                autocomplete="off" placeholder="Repeat Password" required />
-                        </div>
+                        <button type="submit">LOGIN NOW</button>
 
-                        <button type="submit">CREATE YOUR ACCOUNT</button>
-
+                        <p class="forgot-password"><a href="">Forgot password?</a></p>
                         <div class="rights-reserved">
                             <p class="text-muted">
                                 © 2020 Awwards-clone. Andrew John
