@@ -1,5 +1,5 @@
 {% extends "awwards_users/base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="container-fluid single-project-detail">
@@ -36,6 +36,15 @@
     </div>
 </div>
 
-
-
+{% if rate_status %}
+<h5>You have already voted</h5>
+{% else %}
+{% if user.is_authenticated %}
+<form action="{% url 'rating'%}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{rate_form|crispy}}
+    <button class="btn btn-sm btn-info">Rate</button>
+</form>
+{% endif %}
+{% endif %}
 {% endblock %}

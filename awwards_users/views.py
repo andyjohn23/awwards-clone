@@ -200,24 +200,27 @@ def category(request):
     }
     return context
 
+
 def project_search(request):
     form = ProjectSearchForm()
     q = ''
-    results =[]
+    results = []
 
     if 'q' in request.GET:
         form = ProjectSearchForm(request.GET)
         if form.is_valid():
             q = form.cleaned_data['q']
-            
+
             results = Projects.objects.filter(sitename__icontains=q)
 
-    return render(request, 'awwards_users/search.html', {'form':form, 'q':q, 'results':results})
+    return render(request, 'awwards_users/search.html', {'form': form, 'q': q, 'results': results})
 
-@login_required(login_url='/accounts/login')
+
+@login_required(login_url='login')
 def rating_project(request, id):
     project = Projects.objects.get(id=id)
-    rate = Rates.objects.filter(user=request.user.profile, project=project).first()
+    rate = Rates.objects.filter(
+        user=request.user.profile, project=project).first()
     rate_status = None
     if rate is None:
         rate_status = False
@@ -235,7 +238,8 @@ def rating_project(request, id):
             design_rates = [design.design for design in project_rates]
             design_average = sum(design_rates) / len(design_rates)
 
-            usability_rates = [usability.usability for usability in project_rates]
+            usability_rates = [
+                usability.usability for usability in project_rates]
             usability_average = sum(usability_rates) / len(usability_rates)
 
             creativity_rates = [creat.creativity for creat in project_rates]
@@ -244,7 +248,8 @@ def rating_project(request, id):
             content_rates = [content.content for content in project_rates]
             content_average = sum(content_rates) / len(content_rates)
 
-            score = (design_average + usability_average + content_average + creativity_average) / 4
+            score = (design_average + usability_average +
+                     content_average + creativity_average) / 4
             print(score)
             rate.design_average = round(design_average, 2)
             rate.usability_average = round(usability_average, 2)
@@ -261,4 +266,4 @@ def rating_project(request, id):
         'rate_status': rate_status
 
     }
-    return render(request, 'awwards_users/project-rate.html', params)
+    return render(request, 'awwards_users/project_rate.html', params)
