@@ -557,6 +557,9 @@ body {
   font-size: 17px;
   font-family: sans-serif;
 }
+.search-projects{
+  margin-left: 4rem;
+}
 
 /* navbar media query */
 @media all and (min-width: 992px) {
