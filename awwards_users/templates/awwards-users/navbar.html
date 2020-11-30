@@ -40,7 +40,7 @@
                         {{ user.username |upper }}&nbsp;<img src="{{ user.profile.image.url }}" alt="profile-photo">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Profile</a>
+                        <a class="dropdown-item" href="{% url 'user-details'%}">Profile</a>
                         <a class="dropdown-item" href="{% url 'profile-edit'%}">Settings</a>
                         <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
                     </div>

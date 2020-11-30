@@ -379,6 +379,52 @@ body {
 .slide-visit-site a button:hover{
   opacity: 0.9;
 }
+.user-profile{
+  margin-left: 8rem;
+}
+.user-profile img{
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 3rem;
+}
+.user-profile h1{
+  font-size: 21px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: black;
+  padding-top: 0.5rem;
+  margin-left: 3rem;
+}
+.user-profile-projects{
+  margin-top: 8rem;
+}
+.user-profile-projects h1{
+  margin-left: -2rem;
+  font-size: 21px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.user-profile-visit-site{
+  margin-top: 2rem;
+}
+.user-profile-visit-site a button{
+  width: 110px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: sans-serif;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 18px;
+}
+.user-profile-visit-site a button:hover{
+  border-color:rgba(6, 210, 210, 0.8);
+  background:transparent;
+  color: rgba(6, 210, 210, 0.8);
+  transition: 0.5s ease;
+}
 
 /* navbar media query */
 @media all and (min-width: 992px) {
