@@ -33,22 +33,29 @@
 
     <h1>{{ projects|length}} Projects</h1>
     <div class="card-projects">
+        {% if projects %}
         {% for project in projects %}
         <div class="card img-wrapper" style="width: 22.5rem;">
-            <a href=""><img src="{{project.siteimage.url}}" class="card-img-top" alt="project-image" id="myImg"></a>
+            <a href="{% url 'post-detail' project.id %}"><img src="{{project.siteimage.url}}" class="card-img-top"
+                    alt="project-image" id="myImg"></a>
             <a href="" class="vote-button">
                 <div class="add-btn">
                     <button>VOTE NOW</button>
                 </div>
             </a>
             <div class="card-body">
-                <h5 class="card-title"><a href="">{{ project.sitename }}</a></h5>
+                <h5 class="card-title"><a href="{% url 'post-detail' project.id %}">{{ project.sitename }}</a></h5>
                 <p class="card-text">From {{ project.country }}</p><span>{{project.created | date:"F d, Y"}}</span>
                 <a href=""><img src="{{ user.profile.image.url }}">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
                         class="user">{{project.profile}}</span></a>
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <div class="container no-posts">
+            <p>No Projects Yet</p>
+        </div>
+        {% endif %}
     </div>
 </div>
 

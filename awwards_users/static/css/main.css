@@ -118,6 +118,9 @@ body {
 .card-img-top:hover {
   transition: 0.5s ease-in-out;
 }
+.card-projects{
+  margin-bottom: 4rem;
+}
 .card-projects .card {
   border: none;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.8);
@@ -525,6 +528,18 @@ body {
   font-size: 16px;
   font-weight: 500;
   font-family: sans-serif;
+}
+.no-posts {
+  text-align: center;
+  margin-top: -2rem;
+  margin-bottom: 3rem;
+  position: absolute;
+}
+.no-posts i {
+  font-size: 4rem;
+}
+.no-posts p {
+  font-size: 2rem;
 }
 
 /* navbar media query */

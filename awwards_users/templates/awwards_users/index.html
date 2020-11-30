@@ -99,7 +99,7 @@
                 <p class="card-text">From {{ project.country }}</p><span>{{project.created | date:"F d, Y"}}</span>
                 {% if project.profile == user.profile %}
                 <a href="{% url 'user-detail'%}"><img src="/static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
-                        class="user">{{project.profile}}</span></a>
+                        class="user">{{user.profile}}</span></a>
                 {% else %}
                 <a href="{% url 'user-details' project.profile%}"><img src="/static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
                     class="user">{{project.profile}}</span></a>

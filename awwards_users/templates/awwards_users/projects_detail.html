@@ -10,7 +10,11 @@
                         alt="project-image"></a>
                 <a href=""><button>VOTE NOW</button></a>
                 <h2 class="article-title">{{ object.sitename |title }}</h2>
+                {% if object.profile == user.profile %}
+                <p>by <a class="mr-2" href="{% url 'user-detail'%}">{{ object.profile }}</a>({{ object.country }})</p>
+                {% else %}
                 <p>by <a class="mr-2" href="{% url 'user-details' object.profile%}">{{ object.profile }}</a>({{ object.country }})</p>
+                {% endif %}
                 <div class="description">
                     <span>{{ object.description }}</span>
                 </div>
