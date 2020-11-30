@@ -97,7 +97,7 @@
             <div class="card-body">
                 <h5 class="card-title"><a href="{% url 'post-detail' project.id %}">{{ project.sitename }}</a></h5>
                 <p class="card-text">From {{ project.country }}</p><span>{{project.created | date:"F d, Y"}}</span>
-                <a href=""><img src="/static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
+                <a href="{% url 'user-details' project.profile%}"><img src="/static/images/default-avatar.jpg">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
                         class="user">{{project.profile}}</span></a>
             </div>
         </div>

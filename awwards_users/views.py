@@ -126,14 +126,23 @@ class PostCreateView(CreateView):
         return super().form_valid(form)
 
 @method_decorator(login_required, name='dispatch')
+class PersonalPostListView(ListView):
+    model = Projects
+    template_name = 'awwards_users/personal-projects.html'
+    context_object_name = 'projects'
+
+    def get_queryset(self):
+        return Projects.objects.filter(profile=self.request.user.profile).distinct()
+
+@method_decorator(login_required, name='dispatch')
 class UserPostListView(ListView):
     model = Projects
     template_name = 'awwards_users/personal-profile.html'
     context_object_name = 'projects'
 
     def get_queryset(self):
-        return Projects.objects.filter(profile=self.request.user.profile).distinct()
-
+        user = get_object_or_404(UserAccount, username=self.kwargs.get('username'))
+        return Projects.objects.filter(profile=user.profile).order_by('-created')
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Projects

@@ -4,30 +4,29 @@
 
 <div class="container" style="margin-top: 8rem;">
     <div class="user-profile">
-        {% for project in projects %}
         <div class="row">
             <div class="col-md-4">
 
             </div>
 
             <div class="col-md-4 user-profile-photo">
-                <img src="{{ project.profile.image.url }}" alt="profile-photo">
-                <h1>{{ project.profile }}</h1>
-                {% if project.profile.description %}
-                <p style="text-align: center; margin-left: -8rem;">{{ project.profile.description }}</p>
+                <img src="{{ user.profile.image.url }}" alt="profile-photo">
+                <h1>{{ user.username }}</h1>
+                {% if user.profile.description %}
+                <p style="text-align: center; margin-left: -8rem;">{{ user.profile.description }}</p>
                 {% else %}
                 {% endif %}
             </div>
 
             <div class="col-md-4 user-profile-visit-site">
-                {% if project.profile.url %}
-                <a href="{{ project.profile.url }}" target="_blank"><button>Visit Site</button></a>
+                {% if user.profile.url %}
+                <a href="{{ user.profile.url }}" target="_blank"><button>Visit Site</button></a>
                 {% else %}
                 {% endif %}
             </div>
         </div>
-        {% endfor %}
     </div>
+</div>
 </div>
 
 <div class="container user-profile-projects">
@@ -36,17 +35,16 @@
     <div class="card-projects">
         {% for project in projects %}
         <div class="card img-wrapper" style="width: 22.5rem;">
-            <a href="{% url 'post-detail' project.id %}"><img src="{{project.siteimage.url}}" class="card-img-top"
-                    alt="project-image" id="myImg"></a>
+            <a href=""><img src="{{project.siteimage.url}}" class="card-img-top" alt="project-image" id="myImg"></a>
             <a href="" class="vote-button">
                 <div class="add-btn">
                     <button>VOTE NOW</button>
                 </div>
             </a>
             <div class="card-body">
-                <h5 class="card-title"><a href="{% url 'post-detail' project.id %}">{{ project.sitename }}</a></h5>
+                <h5 class="card-title"><a href="">{{ project.sitename }}</a></h5>
                 <p class="card-text">From {{ project.country }}</p><span>{{project.created | date:"F d, Y"}}</span>
-                <a href="{% url 'user-details' project.profile%}"><img src="{{ user.profile.image.url }}">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
+                <a href=""><img src="{{ user.profile.image.url }}">&nbsp;&nbsp;BY&nbsp;&nbsp;<span
                         class="user">{{project.profile}}</span></a>
             </div>
         </div>
