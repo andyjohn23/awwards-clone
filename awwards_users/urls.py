@@ -12,5 +12,6 @@ urlpatterns = [
     path('project/<int:pk>/update/', PostUpdateView.as_view(), name="post-update"),
     path('project/<int:pk>/delete/', PostDeleteView.as_view(), name="post-delete"),
     path('category/<category>/', views.CategoryListView.as_view(), name="category"),
+    path('search/', views.project_search, name='project-search'),
 ]
 

@@ -9,6 +9,7 @@ from .models import UserAccount, Projects, Category
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .forms import ProjectSearchForm
 
 
 # Create your views here.
@@ -198,3 +199,17 @@ def category(request):
         'category': category,
     }
     return context
+
+def project_search(request):
+    form = ProjectSearchForm()
+    q = ''
+    results =[]
+
+    if 'q' in request.GET:
+        form = ProjectSearchForm(request.GET)
+        if form.is_valid():
+            q = form.cleaned_data['q']
+            
+            results = Projects.objects.filter(sitename__icontains=q)
+
+    return render(request, 'awwards_users/search.html', {'form':form, 'q':q, 'results':results})

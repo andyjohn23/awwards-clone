@@ -544,6 +544,19 @@ body {
 .no-posts p {
   font-size: 2rem;
 }
+.category {
+  margin-top: 7rem;
+  margin-left: 1rem;
+}
+.category h1 {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.category p {
+  font-size: 17px;
+  font-family: sans-serif;
+}
 
 /* navbar media query */
 @media all and (min-width: 992px) {

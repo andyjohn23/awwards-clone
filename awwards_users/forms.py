@@ -2,6 +2,7 @@ from django import forms
 from .models import UserAccount, Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
+from django import forms
 
 
 class RegisterUserForm(UserCreationForm):
@@ -56,3 +57,7 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['url', 'description', 'career', 'country', 'twitter', 'facebook',
                   'linkedin', 'instagram']
+
+
+class ProjectSearchForm(forms.Form):
+    q = forms.CharField()
