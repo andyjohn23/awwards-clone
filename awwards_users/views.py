@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
 from .forms import RegisterUserForm, AuthenticationForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
-from .models import UserAccount, Projects, Category
+from .models import UserAccount, Projects, Category, Rates
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .forms import ProjectSearchForm
+from .forms import ProjectSearchForm, RatesForm
 
 
 # Create your views here.
@@ -213,3 +213,52 @@ def project_search(request):
             results = Projects.objects.filter(sitename__icontains=q)
 
     return render(request, 'awwards_users/search.html', {'form':form, 'q':q, 'results':results})
+
+@login_required(login_url='/accounts/login')
+def rating_project(request, id):
+    project = Projects.objects.get(id=id)
+    rate = Rates.objects.filter(user=request.user.profile, project=project).first()
+    rate_status = None
+    if rate is None:
+        rate_status = False
+    else:
+        rate_status = True
+    if request.method == 'POST':
+        form = RatesForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = request.user.profile
+            rate.project = project
+            rate.save()
+            project_rates = Rates.objects.filter(project=project)
+
+            design_rates = [design.design for design in project_rates]
+            design_average = sum(design_rates) / len(design_rates)
+
+            usability_rates = [usability.usability for usability in project_rates]
+            usability_average = sum(usability_rates) / len(usability_rates)
+
+            creativity_rates = [creat.creativity for creat in project_rates]
+            creativity_average = sum(creativity_rates) / len(creativity_rates)
+
+            content_rates = [content.content for content in project_rates]
+            content_average = sum(content_rates) / len(content_rates)
+
+            score = (design_average + usability_average + content_average + creativity_average) / 4
+            print(score)
+            rate.design_average = round(design_average, 2)
+            rate.usability_average = round(usability_average, 2)
+            rate.creativity_average = round(usability_average, 2)
+            rate.content_average = round(content_average, 2)
+            rate.score = round(score, 2)
+            rate.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = RatesForm()
+    params = {
+        'project': project,
+        'rate_form': form,
+        'rate_status': rate_status
+
+    }
+    return render(request, 'awwards_users/project-rate.html', params)

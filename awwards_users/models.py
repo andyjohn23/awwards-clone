@@ -297,3 +297,33 @@ class Projects(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+class Rates(models.Model):
+    rates = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+        (6, '6'),
+        (7, '7'),
+        (8, '8'),
+        (9, '9'),
+        (10, '10'),
+    )
+    project = models.ForeignKey(
+        'Projects', on_delete=models.CASCADE, related_name='ratings', blank=True, null=True)
+    user = models.ForeignKey(
+        'Profile', on_delete=models.CASCADE, related_name='voter', blank=True, null=True)
+    design = models.FloatField(default=0, choices=rates,blank=True)
+    usability = models.FloatField(default=0, choices=rates,blank=True)
+    creativity = models.FloatField(default=0, choices=rates,blank=True)
+    content = models.FloatField(default=0, choices=rates,blank=True)
+    total = models.FloatField(default=0,blank=True)
+    ratetime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.rates)
+
+    class Meta:
+        ordering = ('-ratetime',)

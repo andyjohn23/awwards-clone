@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserAccount, Profile
+from .models import UserAccount, Profile, Rates
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django import forms
@@ -58,6 +58,10 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['url', 'description', 'career', 'country', 'twitter', 'facebook',
                   'linkedin', 'instagram']
 
+class RatesForm(forms.ModelForm):
+    class Meta:
+        model = Rates
+        fields = ['design', 'usability', 'creativity', 'content']
 
 class ProjectSearchForm(forms.Form):
     q = forms.CharField()
