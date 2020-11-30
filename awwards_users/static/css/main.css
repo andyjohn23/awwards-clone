@@ -481,6 +481,7 @@ body {
   font-size: 15px;
   font-family: sans-serif;
   font-weight: normal;
+  margin-bottom: 2rem;
 }
 .single-project-detail p{
   padding-left: 2rem;
@@ -582,6 +583,10 @@ body {
     margin-left: 0rem;
     margin-right: 10rem;
   }
+  .single-project-detail{
+    margin-top: 6rem;
+    margin-left: -2rem;
+  }
 }
 
 /* iphone phones media query */
@@ -637,6 +642,18 @@ body {
   .search-form {
     margin-left: 0rem;
     margin-right: 10rem;
+  }
+  .single-project-detail{
+    margin-top: 6rem;
+    margin-left: -1rem;
+  }
+  .single-project-detail .project-card{
+    width: 100vw;
+    border: 1px solid black;
+  }
+  .single-project-detail small{
+    float: right;
+    margin-top: -4.6rem;
   }
 }
 
