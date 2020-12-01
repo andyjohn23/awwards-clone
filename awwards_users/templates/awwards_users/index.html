@@ -10,7 +10,11 @@
             <div class="carousel-caption">
                 <div class="slide-project-name">
                   <h1>{{ project.sitename }}</h1>
-                  <p>BY <span><a href="">{{project.profile |upper }}</a></span> FROM <span id="slide-country">{{ project.country |upper }}</span></p>
+                  {% if project.profile == user.profile %}
+                  <p>BY <span><a href="{% url 'user-detail'%}">{{project.profile |upper }}</a></span> FROM <span id="slide-country">{{ project.country |upper }}</span></p>
+                  {% else %}
+                  <p>BY <span><a href="{% url 'user-details' project.profile%}">{{project.profile |upper }}</a></span> FROM <span id="slide-country">{{ project.country |upper }}</span></p>
+                  {% endif %}
                 </div>
                 <div class="circle-progress">
                     <div class="row">
