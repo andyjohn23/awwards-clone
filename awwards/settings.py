@@ -59,9 +59,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8wu4_s@hh$7261572ohzstj27+md0pes2p+_9hhddt^!)$6ah6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://awwards-clone-andy.herokuapp.com/']
 
 
 # Application definition
