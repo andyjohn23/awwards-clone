@@ -19,6 +19,7 @@ from awwards_users import views as awwards_users_views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('myandyadmin/', admin.site.urls),
     path('', include('awwards_users.urls')),
@@ -26,6 +27,9 @@ urlpatterns = [
     path('login/', awwards_users_views.login_user, name='login'),
     path('logout/', awwards_users_views.logout_user, name='logout'),
     path('settings/', awwards_users_views.profile_edit, name='profile-edit'),
+    path('users/', awwards_users_views.userList.as_view()),
+    path('projects/', awwards_users_views.projectList.as_view()),
+
 ]
 
 if settings.DEBUG:

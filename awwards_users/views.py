@@ -5,11 +5,15 @@ from .forms import RegisterUserForm, AuthenticationForm, UserUpdateForm, Profile
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
-from .models import UserAccount, Projects, Category, Rates
+from .models import UserAccount, Projects, Category, Rates, Profile
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import ProjectSearchForm, RatesForm
+from .serializer import userSerializer, projectSerializer
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -267,3 +271,23 @@ def rating_project(request, id):
 
     }
     return render(request, 'awwards_users/project_rate.html', params)
+
+class userList(APIView):
+    def get(self, request):
+        user = Profile.objects.all()
+        serializer = userSerializer(user, many=True)
+        return Response(serializer.data)
+
+    def post(self):
+        pass
+
+
+class projectList(APIView):
+    def get(self, request):
+        project = Projects.objects.all()
+        serializer = projectSerializer(project, many=True)
+        return Response(serializer.data)
+
+    def post(self):
+        pass
+
