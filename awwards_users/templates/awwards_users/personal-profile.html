@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container" style="margin-top: 8rem;">
+<div class="container" style="margin-top: -2rem;">
     <div class="user-profile">
         {% for project in projects %}
         <div class="row">
@@ -11,12 +11,7 @@
             </div>
 
             <div class="col-md-4 user-profile-photo">
-                <img src="{{ project.profile.image.url }}" alt="profile-photo">
-                <h1>{{ project.profile }}</h1>
-                {% if project.profile.description %}
-                <p style="text-align: center; margin-left: -8rem;">{{ project.profile.description }}</p>
-                {% else %}
-                {% endif %}
+                
             </div>
 
             <div class="col-md-4 user-profile-visit-site">
